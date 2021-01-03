@@ -6,16 +6,16 @@
   * take your phone (or laptop) and connect to the wifi setup hotspot to setup the wifi for the ESP, plus additional custom parametere if applicable
   * wifi setup mode ends automatically after successful wifi setup
   * your phone will (should) automatically go back to your previews wifi connection - a very smooth experience
-  * the accesspoint name and password to be used for the wifi setup are configuratble in [config.lua](config.lua)
+  * the accesspoint name and password to be used for the wifi setup are configuratble in [config.lua](files-for-the-esp/config.lua)
   * the wifi setup screen supports custom parameters as described in [enduser-setup](https://nodemcu.readthedocs.io/en/release/modules/enduser-setup/)
-  * the custom parameters are stored in [params.lua](params.lua) when the wifi setup is done
+  * the custom parameters are stored in [params.lua](files-for-the-esp/params.lua) when the wifi setup is done
 
 ## Hot it works
   * the mechnism is based on changing the startup file for the lua interpreter if, and only if, the hardware reset is used i.e. neither software reset not waking from deepsleep interfere
   * in normal mode the startup file is init.lua
-  * on hardware reset the init.lua calls [_reset1.lua](_reset1.lua), which changed the startup file to [_reset2.lua](_reset2.lua) and changes it back to [init.lua](init.lua) after 2 seconds
-  * if within those 2 seconds another reset occurs, then [_reset2.lua](_reset2.lua) will run and provide the wifi setup
-  * when the wifi setup succeeds then the startup file will be changed back to [init.lua](init.lua)
+  * on hardware reset the init.lua calls [_reset1.lua](files-for-the-esp/_reset1.lua), which changed the startup file to [_reset2.lua](files-for-the-esp/_reset2.lua) and changes it back to [init.lua](files-for-the-esp/init.lua) after 2 seconds
+  * if within those 2 seconds another reset occurs, then [_reset2.lua](files-for-the-esp/_reset2.lua) will run and provide the wifi setup
+  * when the wifi setup succeeds then the startup file will be changed back to [init.lua](files-for-the-esp/init.lua)
 
 ## Todo
   * compacitify to use less processor cycles in normal mode - to reduce power consumption, it's not bad as is but can likely be improved
